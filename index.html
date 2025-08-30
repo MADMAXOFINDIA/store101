@@ -177,6 +177,51 @@
         <p>Latest fashion — clothing, footwear and accessories.</p>
         <a href="https://amzn.to/46eWzh9" target="_blank">Shop Fashion</a>
       </div>
+      // ...existing code...
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best Amazon Deals</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* minimal image sizing to keep layout sane if style.css missing */
+    .product img.product-img{width:120px;height:120px;object-fit:cover;border-radius:8px;display:block;margin-bottom:8px}
+
+    /* new: search form styles */
+    .search-form{display:flex;gap:8px;align-items:center;margin-top:10px}
+    .search-input{flex:1;padding:8px 10px;border-radius:8px;border:1px solid rgba(0,0,0,0.12);min-width:0}
+    .search-btn{padding:8px 12px;border-radius:8px;background:#ff8a00;border:none;color:#08121a;font-weight:700;cursor:pointer}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔥 Best Amazon Deals 🔥</h1>
+
+    <!-- new: search form (opens Amazon search in new tab) -->
+    <form class="search-form" id="searchForm" role="search">
+      <label for="searchInput" class="sr-only">Search Amazon</label>
+      <input id="searchInput" class="search-input" type="search" placeholder="Search Amazon (e.g. headphones, tote bag)" aria-label="Search Amazon">
+      <button class="search-btn" id="searchBtn" type="submit">Search</button>
+    </form>
+  </header>
+// ...existing code...
+
+<!-- add script just before closing </body> -->
+<script>
+  (function(){
+    const form = document.getElementById('searchForm');
+    const input = document.getElementById('searchInput');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const q = (input.value || '').trim();
+      if(!q) return;
+      const url = 'https://www.amazon.in/s?k=' + encodeURIComponent(q);
+      window.open(url, '_blank', 'noopener');
+    });
+  })();
+</script>
+//
 
 
 
